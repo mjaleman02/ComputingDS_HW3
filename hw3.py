@@ -1,3 +1,8 @@
+### Packages needed here:
+import pandas as pd
+import datetime as dt
+
+
 # 1)
 # Create a function called "car_at_light"
 # It should take one parameter: "light"
@@ -30,12 +35,56 @@
 # Name the first function "retrieve_age_eafp" and follow EAFP
 # Name the second function "retrieve_age_lbyl" and follow lbyl
 
+def retrieve_age_lbyl(dict):
+    
+    dict = dict
+    
+    if "birth" in dict.keys():
+        age = dt.datetime.now().year - dict["birth"]
+        print(dict['name'] + " is " + str(age) + " years old.")
+    else:
+        print("The age of " +  dict['name'] + " is not available.")
+
+
+retrieve_age_lbyl({'name': 'John', 'last_name': 'Doe', 'birth': 1987})
+retrieve_age_lbyl({'name': 'Janet', 'last_name': 'Bird', 'gender': 'female'})
+
+
+def retrieve_age_eafp(dict):
+    
+    dict = dict
+    
+    try:
+        age = dt.datetime.now().year - dict["birth"]
+        print(dict['name'] + " is " + str(age) + " years old.")
+    except KeyError:
+        print("The age of " +  dict['name'] + " is not available.")
+        
+        
+retrieve_age_lbyl({'name': 'John', 'last_name': 'Doe', 'birth': 1987})
+retrieve_age_lbyl({'name': 'Janet', 'last_name': 'Bird', 'gender': 'female'})
+
+
+
 # 4)
 # Imagine you have a file named data.csv. 
 # Create a function called "read_data" that reads the file
 # making sure to use to handle the fact 
 # that it might not exist. 
 #
+
+def read_data(file):
+    
+    try:
+        df = pd.read_csv(file)
+        print("File has been found.")
+        return(df)
+    except FileNotFoundError:
+        print("Error: The file does not exist.")
+
+
+read_data("data.csv")
+
 
 
 # 5) Squash some bugs! 
@@ -62,5 +111,4 @@ while j > 0:
 productory = 0
 for elem in [1, 5, 25]:
     productory *= elem
-
-
+    
