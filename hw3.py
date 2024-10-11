@@ -67,13 +67,13 @@ def retrieve_age_lbyl(dict):
     
     if "birth" in dict.keys():
         age = dt.datetime.now().year - dict["birth"]
-        print(dict['name'] + " is " + str(age) + " years old.")
+        return(dict['name'] + " is " + str(age) + " years old.")
     else:
-        print("The age of " +  dict['name'] + " is not available.")
+        return("The age of " +  dict['name'] + " is not available.")
 
 
-retrieve_age_lbyl({'name': 'John', 'last_name': 'Doe', 'birth': 1987})
-retrieve_age_lbyl({'name': 'Janet', 'last_name': 'Bird', 'gender': 'female'})
+print(retrieve_age_lbyl({'name': 'John', 'last_name': 'Doe', 'birth': 1987}))
+print(retrieve_age_lbyl({'name': 'Janet', 'last_name': 'Bird', 'gender': 'female'}))
 
 
 def retrieve_age_eafp(dict):
@@ -82,13 +82,13 @@ def retrieve_age_eafp(dict):
     
     try:
         age = dt.datetime.now().year - dict["birth"]
-        print(dict['name'] + " is " + str(age) + " years old.")
+        return(dict['name'] + " is " + str(age) + " years old.")
     except KeyError:
-        print("The age of " +  dict['name'] + " is not available.")
+        return("The age of " +  dict['name'] + " is not available.")
         
         
-retrieve_age_lbyl({'name': 'John', 'last_name': 'Doe', 'birth': 1987})
-retrieve_age_lbyl({'name': 'Janet', 'last_name': 'Bird', 'gender': 'female'})
+print(retrieve_age_lbyl({'name': 'John', 'last_name': 'Doe', 'birth': 1987}))
+print(retrieve_age_lbyl({'name': 'Janet', 'last_name': 'Bird', 'gender': 'female'}))
 
 
 
@@ -106,10 +106,10 @@ def read_data(file):
         print("File has been found.")
         return(df)
     except FileNotFoundError:
-        print("Error: The file does not exist.")
+        return("Error: The file does not exist.")
 
 
-read_data("data.csv")
+print(read_data("data.csv"))
 
 
 
