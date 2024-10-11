@@ -16,7 +16,17 @@ import datetime as dt
 # "Undefined instruction for color: <light>" 
 # where <light> is the value of the parameter light.
 #
-
+def car_at_light(light):
+    action = ""
+    if light=="red":
+        action="stop"
+    elif light=="yellow":
+        action="wait"
+    elif light=="green":
+        action="go"
+    else:
+        raise Exception("Undefined instruction for color:" +light)
+    return action
 # 2)
 # Create a function named "safe_subtract" that
 # takes two parameters and returns the result of
@@ -25,6 +35,22 @@ import datetime as dt
 # it returns None.
 # If there is any other reason why it fails show the problem 
 # 
+def safe_subtract(a,b):
+    try:
+        result = a-b
+        return result
+    except TypeError:
+        return None
+
+#print(safe_subtract(1,))
+
+#As we can see in the e.g. if the function is missing any of the two parameters, or the two parameters we can also get the error:
+#  "missing # required positional argument"
+
+#print(safe_subtract(1,"2"))
+
+#Additionally if the parameter added is a number but in string format, it will still show None instead of converting the parameter
+#to the right type, which could be done before in the function
 
 # 3)
 # Imagine you have a dictionary with the attributes of a person
