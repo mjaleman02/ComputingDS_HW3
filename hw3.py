@@ -123,18 +123,100 @@ for elem in [10, 5, 2]:
     double = elem * 2
     total_double_sum += elem
 
+
+
+# Error explanation:
+# Logical mistake in updating the total:
+
+# The purpose of the code seems to be calculating the sum of the doubled values of the elements in the list [10, 5, 2].
+# However, the line total_double_sum += elem adds the original value of elem to the total, instead of adding the doubled value (double).
+# Unused variable double:
+# The variable double = elem * 2 is calculated but never used. The doubled value should be added to total_double_sum, not the original elem.
+
+# Corrected code
+total_double_sum = 0
+for elem in [10, 5, 2]:
+    double = elem * 2
+    total_double_sum += double  # Add the doubled value to the total
+
+print(total_double_sum)  # Also, print the result
+
+
 ### (b)
 strings = ''
 for string in ['I', 'am', 'Groot']:
     strings = string+"_"+string
+
+# Error explanation:
+# Resetting the strings variable inside the loop:
+
+# In each iteration, the strings variable is being reassigned to a new value (string + "_" + string). This means that after # each iteration, the value of strings is overwritten by the latest result, and any previous values are lost.
+# The intent seems to be concatenating each word in the list, with an underscore (_) separator, but the logic
+# currently just overwrites the variable instead of accumulating the result.
+# Concatenating each string with itself:
+
+# The expression string + "_" + string concatenates the same word with an underscore, like "I_I", "am_am", "Groot_Groot". 
+# This may not be the desired outcome, as it looks like the goal is to concatenate different words with an underscore 
+# separating them.
+
+# Corrected Code
+strings = ''
+for string in ['I', 'am', 'Groot']:
+    if strings:  # Check if `strings` is non-empty to avoid leading underscore
+        strings += "_" + string
+    else:
+        strings = string  # Assign the first element without underscore
+
+print(strings)  # Output the concatenated string
+
+
+
 
 ### (c) Careful!
 j=10
 while j > 0:
    j += 1
 
+# Error explanation:
+# Infinite loop:
+# The condition while j > 0: checks if j is greater than 0, which is true at the start since j = 10.
+# Inside the loop, j is incremented by 1 (j += 1), so j will keep increasing, and the condition j > 0 will always remain true. 
+# This results in an infinite loop, as j will never become less than or equal to 0.
+# The intent might be to decrease the value of j and terminate the loop when j becomes zero or negative, 
+# but the current code does the opposite.
+
+# Corrected Code
+j = 10
+while j > 0:
+    j -= 1  # Decrement j by 1 in each iteration
+
+print("Loop finished, j =", j)
+
+
+
 ### (d)
 productory = 0
 for elem in [1, 5, 25]:
     productory *= elem
+
+print(productory)
+
+
+# Error explanation:
+# Incorrect initialization of productory:
+# The goal of the code seems to be calculating the product of the elements in the list [1, 5, 25].
+# However, the variable productory is initialized to 0. 
+# When you multiply any number by 0, the result is always 0. So, multiplying productory by any of the elements in the list will result in 0 on every iteration.
+# To calculate a product, productory should be initialized to 1, not 0, because 1 is the identity element for multiplication.
+
+# Corrected code
+productory = 1
+for elem in [1, 5, 25]:
+    productory *= elem  # Multiply productory by each element
+
+print(productory)  # Output the product
+
+
+
+
     
